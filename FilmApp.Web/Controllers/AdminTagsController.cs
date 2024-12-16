@@ -28,7 +28,7 @@ namespace FilmApp.Web.Controllers
         public async Task<IActionResult> Add(AddTagRequest addTagRequest)
         {
 
-            //  Domain modelini etiketlemek için addTagRequest'i yapılandırıyoruz 
+            //  Domain modelini etiketlemek için addTagRequest'i yapılandırıyoruzz
             var tag = new Tag
             {
                 Name = addTagRequest.Name,
