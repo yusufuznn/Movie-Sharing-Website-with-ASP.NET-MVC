@@ -1,0 +1,45 @@
+﻿@model List<FilmApp.Web.Models.Domain.Tag>
+@{
+}
+
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Etiketleri Göster - Admin Özelliği</h1>
+    </div>
+</div>
+
+<div class="container py-5">
+    @if (Model != null && Model.Any())
+    { //model null değil ve nesne barındırıyor
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Display Name</th>
+                    <th> </th> 
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tag in Model)
+                {
+                    <tr>
+                        <td>@tag.Id</td>
+                        <td>@tag.Name</td>
+                        <td>@tag.DisplayName</td>
+                        <td>
+                            <a asp-area="" asp-controller="AdminTags"
+                            asp-action="Edit"
+                            asp-route-id="@tag.Id">Düzenle</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    } 
+    else
+    {
+        <p> Etiket bulunamadı! </p>
+    }
+</div>
