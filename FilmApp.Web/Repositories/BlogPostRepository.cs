@@ -1,5 +1,6 @@
 ﻿using FilmApp.Web.Data;
 using FilmApp.Web.Models.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace FilmApp.Web.Repositories
 {
@@ -25,14 +26,14 @@ namespace FilmApp.Web.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<BlogPost>> GetAllAsync()
+        public async Task<IEnumerable<BlogPost>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await bloggieDbContext.BlogPosts.Include(x => x.Tags).ToListAsync();
         }
 
-        public Task<BlogPost?> GetAsync(Guid id)
+        public async Task<BlogPost?> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await bloggieDbContext.BlogPosts.Include(x => x.Tags).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public Task<BlogPost?> UpdateAsync(BlogPost blogPost)

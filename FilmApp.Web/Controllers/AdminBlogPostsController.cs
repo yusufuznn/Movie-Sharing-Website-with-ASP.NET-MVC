@@ -72,5 +72,54 @@ namespace FilmApp.Web.Controllers
 
             return RedirectToAction("Add");
         }
+
+        [HttpGet]   
+        public async Task<IActionResult> List()
+        {
+            // data getirmek için repository çağrılır. DB'den data getirmek repository'nin görevidir
+            var blogPosts = await blogPostRepository.GetAllAsync();
+
+
+            return View(blogPosts);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            // sonucu repositoryden alalım
+            var blogPost = await blogPostRepository.GetAsync(id);
+            var tagsDomainModel = await tagRepository.GetAllAsync();
+
+            if(blogPost != null)
+            {
+                // domain modeli view modele çekelim
+                var model = new EditBlogPostRequest
+                {
+                    Id = blogPost.Id,
+                    Heading = blogPost.Heading,
+                    PageTitle = blogPost.PageTitle,
+                    Content = blogPost.Content,
+                    Author = blogPost.Author,
+                    FeaturedImageUrl = blogPost.FeaturedImageUrl,
+                    PublishedDate = blogPost.PublishedDate,
+                    UrlHandle = blogPost.UrlHandle,
+                    ShortDescription = blogPost.ShortDescription,
+                    Visible = blogPost.Visible,
+                    Tags = tagsDomainModel.Select(x => new SelectListItem
+                    {
+                        Text = x.Name,
+                        Value = x.Id.ToString()
+                    }),
+                    SelectedTags = blogPost.Tags.Select(x => x.Id.ToString()).ToArray()
+                };
+
+                
+                return View(model);
+            }
+            // datayı görüntülemek için iletelim
+            return View(null);
+
+        }
     }
 }

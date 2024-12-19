@@ -1,6 +1,8 @@
-﻿namespace FilmApp.Web.Models.Domain
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace FilmApp.Web.Models.ViewModels
 {
-    public class BlogPost
+    public class EditBlogPostRequest
     {
         public Guid Id { get; set; }
         public string Heading { get; set; }
@@ -13,7 +15,11 @@
         public string Author { get; set; }
         public bool Visible { get; set; }
 
-        // navigasyon özellik - entity framework'e ilişkili özellik olduğunu belirtir
-        public ICollection<Tag> Tags { get; set; }
+
+        // Etiketleri göster
+        public IEnumerable<SelectListItem> Tags { get; set; } // liste olduğu için IEnumerable
+        // Etiketleri getir
+        public string[] SelectedTags { get; set; } = Array.Empty<string>(); // birden fazla seçim yapmak için array
+
     }
 }
