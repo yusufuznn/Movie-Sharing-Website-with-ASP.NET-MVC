@@ -4,7 +4,7 @@ using FilmApp.Web.Data;
 using FilmApp.Web.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 using FilmApp.Web.Repositories;
-///  BU SAYFADA YER ALAN BLOGGIE DB CONTEXT YAPILARI TagRepository.cs aktardık.
+///  BU SAYFADA YER ALAN BLOGGIE DB CONTEXT YAPILARI TagRepository.cs aktardık..
 namespace FilmApp.Web.Controllers
 {
     public class AdminTagsController : Controller
