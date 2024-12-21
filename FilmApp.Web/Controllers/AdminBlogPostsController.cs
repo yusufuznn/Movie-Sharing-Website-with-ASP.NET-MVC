@@ -121,5 +121,55 @@ namespace FilmApp.Web.Controllers
             return View(null);
 
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditBlogPostRequest editBlogPostRequest)
+        {
+            // domain modeli view modele eşleyelim
+            var blogPostDomainModel = new BlogPost
+            {
+                Id = editBlogPostRequest.Id,
+                Heading = editBlogPostRequest.Heading,
+                PageTitle = editBlogPostRequest.PageTitle,
+                Content = editBlogPostRequest.Content,
+                Author = editBlogPostRequest.Author,
+                FeaturedImageUrl = editBlogPostRequest.FeaturedImageUrl,
+                PublishedDate = editBlogPostRequest.PublishedDate,
+                UrlHandle = editBlogPostRequest.UrlHandle,
+                ShortDescription = editBlogPostRequest.ShortDescription,
+                Visible = editBlogPostRequest.Visible
+            };
+
+            // etiketleri domain modelle eşleyelim
+            var selectedTags = new List<Tag>();
+            foreach (var selectedTagId in editBlogPostRequest.SelectedTags)
+            {
+                if (Guid.TryParse(selectedTagId, out var tag))
+                {
+                    var foundTag = await tagRepository.GetAsync(tag);
+                    if (foundTag != null)
+                    {
+                        selectedTags.Add(foundTag);
+                    }
+                }
+            }
+
+            blogPostDomainModel.Tags = selectedTags;
+
+
+            // repositorye güncelleme bilgisini gönderelim
+            var updatedBlog = await blogPostRepository.UpdateAsync(blogPostDomainModel);
+
+            if (updatedBlog != null)
+            {
+                // başarılı geri bildirim
+                return RedirectToAction("Edit");
+            }
+            // hata bildirimi
+            return RedirectToAction("Edit");
+
+            // get metoduna yönlendirelim
+
+        }
     }
 }
