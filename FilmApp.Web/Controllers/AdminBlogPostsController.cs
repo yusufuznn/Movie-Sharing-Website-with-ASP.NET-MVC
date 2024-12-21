@@ -171,5 +171,23 @@ namespace FilmApp.Web.Controllers
             // get metoduna yönlendirelim
 
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(EditBlogPostRequest editBlogPostRequest)
+        {
+            // silme işlemi için repositorye yönlendirme yapalım
+            var deletedBlogPost = await blogPostRepository.DeleteAsync(editBlogPostRequest.Id);
+
+            if (deletedBlogPost != null)
+            {
+                // başarılı geri bildirim
+                return RedirectToAction("List");
+            }
+            // hata bildirimi
+            return RedirectToAction("Edit", new {id = editBlogPostRequest.Id});
+
+            // sonucu ekranda gösterelim
+
+        }
     }
 }
