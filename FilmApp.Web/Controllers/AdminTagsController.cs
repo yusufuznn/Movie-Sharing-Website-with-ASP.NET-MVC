@@ -80,7 +80,7 @@ namespace FilmApp.Web.Controllers
 
             return View(null);
 
-            return View();
+            
         }
 
         [HttpPost]
