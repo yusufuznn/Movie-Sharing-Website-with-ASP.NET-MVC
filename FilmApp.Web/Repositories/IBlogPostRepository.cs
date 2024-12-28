@@ -8,6 +8,8 @@ namespace FilmApp.Web.Repositories
 
         Task<BlogPost?> GetAsync(Guid id); // null olabileceği için task içine ?
 
+        Task<BlogPost?> GetByUrlHandleAsync(string urlHandle);
+
         Task<BlogPost> AddAsync(BlogPost blogPost);
 
         Task<BlogPost?> UpdateAsync(BlogPost blogPost); // işlem yapılacak entity'nin bulunmama durumu da var
