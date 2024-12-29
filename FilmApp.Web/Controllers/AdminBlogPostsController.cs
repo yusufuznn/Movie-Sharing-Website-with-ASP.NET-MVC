@@ -1,6 +1,7 @@
 ﻿using FilmApp.Web.Models.Domain;
 using FilmApp.Web.Models.ViewModels;
 using FilmApp.Web.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -18,7 +19,7 @@ namespace FilmApp.Web.Controllers
         }
 
 
-
+        
         [HttpGet]
         public async Task<IActionResult> Add()
         {

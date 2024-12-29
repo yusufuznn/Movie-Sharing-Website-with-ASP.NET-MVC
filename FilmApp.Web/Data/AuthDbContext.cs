@@ -63,7 +63,7 @@ namespace FilmApp.Web.Data
             };
 
             superAdminUser.PasswordHash = new PasswordHasher<IdentityUser>()
-                .HashPassword(superAdminUser, "SuperAdminYsf123");
+                .HashPassword(superAdminUser, "SuperAdmin@123");
 
             builder.Entity<IdentityUser>().HasData(superAdminUser);
 
@@ -89,6 +89,8 @@ namespace FilmApp.Web.Data
             };
 
             builder.Entity<IdentityUserRole<string>>().HasData(superAdminRoles);
+
+
 
 
 
