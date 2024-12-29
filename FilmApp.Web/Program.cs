@@ -1,7 +1,10 @@
 using FilmApp.Web.Data;
 using FilmApp.Web.Repositories;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Threading.Tasks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +14,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BloggieDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("BloggieDbConnectionString")));
 
-builder.Services.AddDbContext<AuthDbContext>(options => 
+builder.Services.AddDbContext<AuthDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("BloggieAuthDbConnectionString")));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
@@ -20,12 +23,12 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 builder.Services.Configure<IdentityOptions>(options =>
 {
     // Varsayýlan þifre ayarlarý     || daha sonra deðiþtirilebilir
-    options.Password.RequireDigit = true;
-    options.Password.RequireLowercase = true;
-    options.Password.RequireUppercase = true;
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireUppercase = false;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequiredLength = 6;
-    options.Password.RequiredUniqueChars = 1;
+    options.Password.RequiredUniqueChars = 0;
 });
 
 builder.Services.AddScoped<ITagRepository, TagRepository>();
@@ -33,6 +36,38 @@ builder.Services.AddScoped<IBlogPostRepository, BlogPostRepository>();
 builder.Services.AddScoped<IImageRepository, CloudinaryImageRepository>();
 
 var app = builder.Build();
+
+// SuperAdmin kullanýcýsýný oluþtur ve ekle
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+    var superAdminEmail = "superadmin@example.com";
+    var superAdminPassword = "SuperAdmin123!";
+
+    if (await userManager.FindByEmailAsync(superAdminEmail) == null)
+    {
+        var superAdmin = new IdentityUser { UserName = superAdminEmail, Email = superAdminEmail };
+        var result = await userManager.CreateAsync(superAdmin, superAdminPassword);
+
+        if (result.Succeeded)
+        {
+            if (!await roleManager.RoleExistsAsync("SuperAdmin"))
+            {
+                await roleManager.CreateAsync(new IdentityRole("SuperAdmin"));
+            }
+
+            if (!await roleManager.RoleExistsAsync("Admin"))
+            {
+                await roleManager.CreateAsync(new IdentityRole("Admin"));
+            }
+
+            await userManager.AddToRoleAsync(superAdmin, "SuperAdmin");
+            await userManager.AddToRoleAsync(superAdmin, "Admin");
+        }
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -61,18 +61,36 @@ namespace FilmApp.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
-
             var signInResult = await signInManager.PasswordSignInAsync(loginViewModel.Username,
                 loginViewModel.Password, false, false);
 
-            if (signInResult!=null && signInResult.Succeeded)
+            if (signInResult != null && signInResult.Succeeded)
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            // hata bildirimi
-            return View();
+            // Giriş başarısız olduysa nedenini kontrol edin
+            if (signInResult != null)
+            {
+                if (signInResult.IsLockedOut)
+                {
+                    ModelState.AddModelError("", "Hesabınız kilitli. Lütfen daha sonra tekrar deneyin.");
+                }
+                else if (signInResult.IsNotAllowed)
+                {
+                    ModelState.AddModelError("", "Hesabınıza giriş izni verilmedi. E-posta doğrulaması gerekebilir.");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Geçersiz kullanıcı adı veya şifre.");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Kimlik doğrulama sırasında bir hata oluştu.");
+            }
 
+            return View();
         }
 
 
