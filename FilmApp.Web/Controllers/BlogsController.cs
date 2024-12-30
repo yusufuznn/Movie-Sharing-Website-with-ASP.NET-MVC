@@ -1,5 +1,6 @@
 ﻿using FilmApp.Web.Models.ViewModels;
 using FilmApp.Web.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FilmApp.Web.Controllers
@@ -8,18 +9,25 @@ namespace FilmApp.Web.Controllers
     {
         private readonly IBlogPostRepository blogPostRepository;
         private readonly IBlogPostLikeRepository blogPostLikeRepository;
+        private readonly SignInManager<IdentityUser> signInManager;
+        private readonly UserManager<IdentityUser> userManager;
 
         public BlogsController(IBlogPostRepository blogPostRepository,
-            IBlogPostLikeRepository blogPostLikeRepository)
+            IBlogPostLikeRepository blogPostLikeRepository,
+            SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser> userManager)
         {
             this.blogPostRepository = blogPostRepository;
             this.blogPostLikeRepository = blogPostLikeRepository;
+            this.signInManager = signInManager;
+            this.userManager = userManager;
         }
 
 
         [HttpGet]
         public async Task<IActionResult> Index(string urlHandle)
         {
+            var liked = false;
             var blogPost = await blogPostRepository.GetByUrlHandleAsync(urlHandle);
             var blogDetailsViewModel = new BlogDetailsViewModel();
 
@@ -29,7 +37,22 @@ namespace FilmApp.Web.Controllers
             {
                 var totalLikes = await blogPostLikeRepository.GetTotalLikes(blogPost.Id);
 
-                blogDetailsViewModel = new BlogDetailsViewModel
+                if (signInManager.IsSignedIn(User))
+                {
+                    // giriş yapan kullanıcı için beğeni sayısını alıyoruz
+                    var likesForBlog = await blogPostLikeRepository.GetLikesForBlog(blogPost.Id);
+
+                    var userId = userManager.GetUserId(User);
+
+                    if (userId != null)
+                    {
+                        var likeFromUser = likesForBlog.FirstOrDefault(x => x.UserId == Guid.Parse(userId));
+
+                        liked = likeFromUser != null;
+                    }
+                }
+
+                    blogDetailsViewModel = new BlogDetailsViewModel
                 {
                     Id = blogPost.Id,
                     Content = blogPost.Content,
@@ -42,8 +65,9 @@ namespace FilmApp.Web.Controllers
                     Tags = blogPost.Tags,
                     UrlHandle = blogPost.UrlHandle,
                     Visible = blogPost.Visible,
-                    TotalLikes = totalLikes
-                };
+                    TotalLikes = totalLikes,
+                    Liked = liked
+                    };
             }
 
             return View(blogDetailsViewModel);

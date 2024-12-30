@@ -24,12 +24,22 @@
 				<div class="mb-3">
 					@if (signInManager.IsSignedIn(User))
 					{
-						<a id="btnLike" style="cursor: pointer;" >
-							<i class="bi bi-hand-thumbs-up"></i>
-						</a>
+						if(Model.Liked)
+						{
+							<a style="cursor: pointer;">
+								<i class="bi bi-hand-thumbs-up-fill"></i>
+							</a>
+						}
+						else
+						{
+							<a id="btnLike" style="cursor: pointer;">
+								<i class="bi bi-hand-thumbs-up"></i>
+							</a>
+						}
+						
 					}
 
-					<span>@Model.TotalLikes</span> beğeni
+					<span id="totalLikes">@Model.TotalLikes</span> beğeni
 				</div>
 
 				<div class="mb-3 d-flex">
@@ -58,24 +68,55 @@
 
 @section Scripts{
 	<script>
-		const btnLikeElement = document.getElementById('btnLike');
+				const btnLikeElement = document.getElementById('btnLike');
+		const totalLikeElement = document.getElementById('totalLikes');
 
-		async function addLikeForBlog()
-		{
-			fetch('/api/BlogPostLike/Add',{
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					'Accept':'*/*'
-				},
-				body: JSON.stringify({
-					blogPostId: '@Model.Id', 
-					userId: '@userManager.GetUserId(User)'
-				})
-			}).then(console.log('İstek tamamlandı'));
+		async function getTotalLikes() {
+			try {
+				const response = await fetch('/api/blogpostlike/@Model.Id/totalLikes', {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						'Accept': '*/*'
+					}
+				});
+				if (!response.ok) throw new Error('Beğeni bilgisi alınamadı!');
+				const result = await response.json();
+				totalLikeElement.innerHTML = result;
+			} catch (error) {
+				console.error('Hata:', error);
+			}
+		}
+
+		async function addLikeForBlog() {
+			btnLikeElement.disabled = true;
+			try {
+				const response = await fetch('/api/BlogPostLike/Add', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'Accept': '*/*'
+					},
+					body: JSON.stringify({
+						blogPostId: '@Model.Id'
+					})
+				});
+				if (!response.ok) throw new Error('Beğeni işlemi başarısız!');
+				btnLikeElement.innerHTML = '<i class="bi bi-hand-thumbs-up-fill"></i>';
+				btnLikeElement.removeEventListener('click', addLikeForBlog);
+				// Hafızada güncelleme
+				const currentLikes = parseInt(totalLikeElement.innerHTML, 10) || 0;
+				totalLikeElement.innerHTML = currentLikes + 1;
+			} catch (error) {
+				console.error('Hata:', error);
+				alert('Beğeni işlemi başarısız. Lütfen tekrar deneyin.');
+			} finally {
+				btnLikeElement.disabled = false;
+			}
 		}
 
 		btnLikeElement.addEventListener('click', addLikeForBlog);
+
 
 	</script>
 }
