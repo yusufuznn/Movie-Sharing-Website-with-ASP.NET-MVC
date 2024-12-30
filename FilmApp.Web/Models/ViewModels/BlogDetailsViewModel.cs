@@ -1,6 +1,8 @@
-﻿namespace FilmApp.Web.Models.Domain
+﻿using FilmApp.Web.Models.Domain;
+
+namespace FilmApp.Web.Models.ViewModels
 {
-    public class BlogPost
+    public class BlogDetailsViewModel
     {
         public Guid Id { get; set; }
         public string Heading { get; set; }
@@ -13,9 +15,8 @@
         public string Author { get; set; }
         public bool Visible { get; set; }
 
-        // navigasyon özellik - entity framework'e ilişkili özellik olduğunu belirtir
         public ICollection<Tag> Tags { get; set; }
 
-        public ICollection<BlogPostLike> Likes { get; set; }
+        public int TotalLikes { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 ///  BU SAYFADA YER ALAN BLOGGIE DB CONTEXT YAPILARI TagRepository.cs aktardık..
 namespace FilmApp.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminTagsController : Controller
     {
         private readonly ITagRepository tagRepository;
@@ -18,14 +19,12 @@ namespace FilmApp.Web.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Add()
         {
             return View();  // başlangıç html dosyasını gösterdiğinden asenkron yapıya gerek yok
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ActionName("Add")]
         public async Task<IActionResult> Add(AddTagRequest addTagRequest)
@@ -50,7 +49,6 @@ namespace FilmApp.Web.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
         /// etiketleri liste halinde ekranda göstereceğiz
         [HttpGet]
         [ActionName("List")]
