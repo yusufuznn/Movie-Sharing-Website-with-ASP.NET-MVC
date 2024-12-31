@@ -9,15 +9,33 @@
     </div>
 </div>
 
-<div class="container py-5">
+
+<form method="get"
+    asp-controller="AdminTags",
+    asp-action="List"
+    >
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col col-md-3 d-flex">
+                <input type="text" class="form-control" 
+                name="searchQuery" value="@ViewBag.SearchQuery"/>
+                <button type="submit" class="btn btn-warning ms-3">Ara</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+<div class="container mt-3">
     @if (Model != null && Model.Any())
     { //model null değil ve nesne barındırıyor
         <table class="table">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Name</th>
-                    <th>Display Name</th>
+                    <th>Etiket adı</th>
+                    <th>Uzun hali</th>
                     <th> </th> 
                 </tr>
             </thead>

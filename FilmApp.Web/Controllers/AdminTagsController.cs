@@ -29,6 +29,13 @@ namespace FilmApp.Web.Controllers
         [ActionName("Add")]
         public async Task<IActionResult> Add(AddTagRequest addTagRequest)
         {
+            ValidateAddTagRequest(addTagRequest);
+
+            if(ModelState.IsValid == false)
+            {
+                return View();
+            }
+
 
             //  Domain modelini etiketlemek için addTagRequest'i yapılandırıyoruzz
             var tag = new Tag
@@ -49,17 +56,24 @@ namespace FilmApp.Web.Controllers
         }
 
 
+
+
         /// etiketleri liste halinde ekranda göstereceğiz
         [HttpGet]
         [ActionName("List")]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(string? searchQuery)
         {
+            ViewBag.SearchQuery = searchQuery;
+
             // etiketleri okumak için dbContext kullanacağız
-            var tags = await tagRepository.GetAllAsync();
+            var tags = await tagRepository.GetAllAsync(searchQuery);
 
 
             return View(tags);
         }
+
+
+
 
 
         [HttpGet]
@@ -126,6 +140,34 @@ namespace FilmApp.Web.Controllers
             //  hata bildirimi göster
             return RedirectToAction("Edit", new {id = editTagRequest.Id});
         }
+
+
+
+
+
+
+
+
+
+        private void ValidateAddTagRequest(AddTagRequest request)
+        {
+            if (request.Name is not null && request.DisplayName is not null)
+            {
+                if (request.Name == request.DisplayName)
+                {
+                    ModelState.AddModelError("DisplayName", "Etiket adı ve görünen adı aynı olamaz");
+                }
+                
+            }
+        }
+
+
+
+
+
+
+
+
 
 
 

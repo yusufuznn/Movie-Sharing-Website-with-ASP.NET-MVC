@@ -17,22 +17,22 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Page Title </label>
+            <label class="form-label">Uzun başlık</label>
             <input type="text" class="form-control" id="pageTitle" asp-for="PageTitle" />
         </div>
 
         <div class="mb-3">
-            <label class="form-label">İçerik </label>
+            <label class="form-label">İçerik</label>
             <textarea class="form-control" id="content" asp-for="Content"> </textarea>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Short Description </label>
+            <label class="form-label">Özet</label>
             <input type="text" class="form-control" id="shortDescription" asp-for="ShortDescription" />
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Featured Image Upload</label>
+            <label class="form-label">Öne Çıkan Fotoğraf Yükle</label>
             <input type="file" id="featuredImageUpload" class="form-control"/>
 
             <img src="#" id="featuredImageDisplay" style="display:none;width: 300px"/>
@@ -40,22 +40,22 @@
 
 
         <div class="mb-3">
-            <label class="form-label">Featured Image URL </label>
+            <label class="form-label">Öne Çıkan Fotoğraf URL</label>
             <input type="text" class="form-control" id="featuredImageUrl" asp-for="FeaturedImageUrl" />
         </div>
 
         <div class="mb-3">
-            <label class="form-label">URL Handle</label>
+            <label class="form-label">URL Yönetimi</label>
             <input type="text" class="form-control" id="urlHandle" asp-for="UrlHandle" />
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Published Date </label>
+            <label class="form-label">Yayınlanma Tarihi</label>
             <input type="date" class="form-control" id="publishedDate" asp-for="PublishedDate" />
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Author </label>
+            <label class="form-label">Paylaşan</label>
             <input type="text" class="form-control" id="author" asp-for="Author" />
         </div>
 
@@ -63,12 +63,12 @@
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" id="visible" asp-for="Visible">
             <label class="form-check-label" >
-                Is Visible?
+                Görünür mü?
             </label>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Tags</label>
+            <label class="form-label">Etiketler</label>
             <select class="form-select" 
             asp-items="@Model.Tags"
             asp-for="SelectedTags">
@@ -80,7 +80,7 @@
 
         <div class="mb-3">
             <button type="submit" class="btn btn-dark"> 
-                Save
+                Kaydet
             </button>
         </div>
 

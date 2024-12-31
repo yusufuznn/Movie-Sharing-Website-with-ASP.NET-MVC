@@ -6,7 +6,8 @@ namespace FilmApp.Web.Repositories
     {
         /// veritabanına nasıl erişeceğiz, veritabanında tag tablosuna erişme
 
-        Task<IEnumerable<Tag>> GetAllAsync();
+        Task<IEnumerable<Tag>> GetAllAsync(
+            string? searchQuery = null);
 
         Task<Tag?> GetAsync(Guid id);
 

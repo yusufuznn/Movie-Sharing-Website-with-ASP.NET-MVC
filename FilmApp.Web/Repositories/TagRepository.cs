@@ -12,6 +12,25 @@ namespace FilmApp.Web.Repositories
         {
             this.bloggieDbContext = bloggieDbContext;
         }
+        public async Task<IEnumerable<Tag>> GetAllAsync(string? searchQuery)
+        {
+            var query = bloggieDbContext.Tags.AsQueryable();
+
+            // filtreleme
+            if(!string.IsNullOrWhiteSpace(searchQuery))
+            {
+                query = query.Where(x => x.Name.Contains(searchQuery) || 
+                                         x.DisplayName.Contains(searchQuery));
+            }
+            // sıralama
+
+            // sayfalama
+
+            return await query.ToListAsync();
+            //return await bloggieDbContext.Tags.ToListAsync();
+        }
+
+
         public async Task<Tag> AddAsync(Tag tag)
         {
             await bloggieDbContext.Tags.AddAsync(tag);
@@ -33,11 +52,7 @@ namespace FilmApp.Web.Repositories
             return null;
         }
 
-        public async Task<IEnumerable<Tag>> GetAllAsync()
-        {
-            return await bloggieDbContext.Tags.ToListAsync();
-        }
-
+        
         public Task<Tag?> GetAsync(Guid id)
         {
            return bloggieDbContext.Tags.FirstOrDefaultAsync(x => x.Id == id);
