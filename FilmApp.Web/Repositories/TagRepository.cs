@@ -12,7 +12,13 @@ namespace FilmApp.Web.Repositories
         {
             this.bloggieDbContext = bloggieDbContext;
         }
-        public async Task<IEnumerable<Tag>> GetAllAsync(string? searchQuery)
+        public async Task<IEnumerable<Tag>> GetAllAsync(
+            string? searchQuery,
+            string? sortBy,
+            string? sortDirection,
+            int pageNumber = 1,
+            int pageSize = 1000
+            )
         {
             var query = bloggieDbContext.Tags.AsQueryable();
 
@@ -23,8 +29,32 @@ namespace FilmApp.Web.Repositories
                                          x.DisplayName.Contains(searchQuery));
             }
             // sıralama
+            if (string.IsNullOrWhiteSpace(sortBy) == false)
+            {
+                var isDesc = string.Equals(sortDirection,"Desc", StringComparison.OrdinalIgnoreCase);
+
+                if (string.Equals(sortBy, "Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    query = isDesc ? query.OrderByDescending(x => x.Name) : query.OrderBy(x => x.Name);
+
+                }
+                if (string.Equals(sortBy, "DisplayName", StringComparison.OrdinalIgnoreCase))
+                {
+                    query = isDesc ? query.OrderByDescending(x => x.DisplayName) : query.OrderBy(x => x.DisplayName);
+
+                }
+            }
+
+
+
 
             // sayfalama
+            var skipResults =  (pageNumber - 1) * pageSize;
+            query = query.Skip(skipResults).Take(pageSize);
+
+
+
+
 
             return await query.ToListAsync();
             //return await bloggieDbContext.Tags.ToListAsync();
@@ -76,14 +106,9 @@ namespace FilmApp.Web.Repositories
         }
 
 
-
-
-
-
-
-
-
-
-
+        public async Task<int> CountAsync()
+        {
+            return await bloggieDbContext.Tags.CountAsync();
+        }
     }
 }

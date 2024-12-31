@@ -1,5 +1,7 @@
 ﻿@model List<FilmApp.Web.Models.Domain.Tag>
 @{
+    int nextPage = Convert.ToInt32(ViewBag.PageNumber) + 1;
+    int prevPage = Convert.ToInt32(ViewBag.PageNumber) - 1;
 }
 
 
@@ -34,8 +36,58 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Etiket adı</th>
-                    <th>Uzun hali</th>
+                    <th>
+                     Etiket adı
+                        <span>
+                            <span>
+                                <a class="btn btn-light"
+                                   asp-controller="AdminTags"
+                                   asp-action="List"
+                                   asp-route-sortBy="Name" 
+                                   asp-route-sortDirection="Asc"
+                                   asp-route-searchQuery="@ViewBag.SearchQuery"
+                                   >
+                                    <i class="bi bi-arrow-up"></i>
+                                </a>
+                            </span>
+                            <span>
+                                <a class="btn btn-light"
+                                   asp-controller="AdminTags"
+                                   asp-action="List"
+                                   asp-route-sortBy="Name"
+                                   asp-route-sortDirection="Desc"
+                                   asp-route-searchQuery="@ViewBag.SearchQuery"
+                                   >
+                                    <i class="bi bi-arrow-down"></i>
+                                </a>
+                            </span>
+                        </span>
+                    
+                    </th>
+                    <th>Uzun hali
+                        <span>
+                            <span>
+                                <a class="btn btn-light"
+                                   asp-controller="AdminTags"
+                                   asp-action="List"
+                                   asp-route-sortBy="DisplayName"
+                                   asp-route-sortDirection="Asc"
+                                   asp-route-searchQuery="@ViewBag.SearchQuery">
+                                    <i class="bi bi-arrow-up"></i>
+                                </a>
+                            </span>
+                            <span>
+                                <a class="btn btn-light"
+                                   asp-controller="AdminTags"
+                                   asp-action="List"
+                                   asp-route-sortBy="DisplayName"
+                                   asp-route-sortDirection="Desc"
+                                   asp-route-searchQuery="@ViewBag.SearchQuery">
+                                    <i class="bi bi-arrow-down"></i>
+                                </a>
+                            </span>
+                        </span>
+                    </th>
                     <th> </th> 
                 </tr>
             </thead>
@@ -55,6 +107,53 @@
                 }
             </tbody>
         </table>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link"
+                       asp-controller="AdminTags"
+                       asp-action="List"
+                       asp-route-pageNumber="@prevPage"
+                       asp-route-pageSize="@ViewBag.PageSize"
+                       asp-route-sortBy="@ViewBag.SortBy"
+                       asp-route-sortDirection="@ViewBag.SortDirection">
+                        Önceki
+                    </a>
+                </li>
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item">
+                        <a class="page-link" 
+                        asp-controller="AdminTags"
+                        asp-action="List"
+                        asp-route-pageNumber="@i"
+                        asp-route-pageSize="@ViewBag.PageSize"
+                        asp-route-sortBy="@ViewBag.SortBy"
+                        asp-route-sortDirection="@ViewBag.SortDirection">
+                        
+                        @i
+                        </a>
+                    </li>
+
+                }
+
+                <li class="page-item">
+                    <a class="page-link"
+                       asp-controller="AdminTags"
+                       asp-action="List"
+                       asp-route-pageNumber="@nextPage"
+                       asp-route-pageSize="@ViewBag.PageSize"
+                       asp-route-sortBy="@ViewBag.SortBy"
+                       asp-route-sortDirection="@ViewBag.SortDirection">
+                    Sonraki
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+
+
     } 
     else
     {
