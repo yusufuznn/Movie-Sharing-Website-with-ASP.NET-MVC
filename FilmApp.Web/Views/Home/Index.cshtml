@@ -33,7 +33,7 @@
 </div>
 
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-lg-between">
         <div class="col-6 d-flex">
             @if(Model!=null && Model.Tags.Any()){
                 foreach (var tag in Model.Tags)
@@ -53,42 +53,40 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-6">
-            @if (Model != null && Model.BlogPosts.Any()) 
+        <div class="col-12 col-md-6 col-lg-4">
+            <!-- Daha dar sütun -->
+            @if (Model != null && Model.BlogPosts.Any())
             {
                 foreach (var blogPost in Model.BlogPosts)
                 {
-                    <div class="mb-5 bg-light box-shadow p-5">
+                    <div class="card mb-4 shadow-sm">
+                        <!-- Card stili -->
                         <img src="@blogPost.FeaturedImageUrl" alt="@blogPost.Heading"
-                        class="mb-2 d-block img-fluid"/>
+                             class="card-img-top" />
 
-                        <h2 class="mb-4">@blogPost.Heading</h2>
-                        <p class="mb-4">
-                            Yazar: @blogPost.Author
-                            <br />
-                            Paylaşım Tarihi:@blogPost.PublishedDate.ToShortDateString()
-                        </p>
-                        
-                        <p class="mb-4">
-                            @foreach (var tag in blogPost.Tags)
-                            {
-                                <span class="badge bg-secondary me-1">@tag.Name</span>
-                            }
-                        </p>
-
-                        <p class="mb-4">@blogPost.ShortDescription</p>
-                        
-                        <a class="btn btn-dark" 
-                        asp-area=""
-                        asp-controller="Blogs"
-                        asp-action="Index"
-                        asp-route-urlHandle="@blogPost.UrlHandle"
-                        >Daha Fazla</a>
+                        <div class="card-body">
+                            <h5 class="card-title">@blogPost.Heading</h5>
+                            <p class="card-text text-truncate" style="max-height: 3em; overflow: hidden;">
+                                @blogPost.ShortDescription
+                            </p>
+                            <p class="text-muted">
+                                <small>Yazar: @blogPost.Author</small>
+                                <br />
+                                <small>Paylaşım Tarihi: @blogPost.PublishedDate.ToShortDateString()</small>
+                            </p>
+                            <a class="btn btn-dark btn-sm"
+                               asp-area=""
+                               asp-controller="Blogs"
+                               asp-action="Index"
+                               asp-route-urlHandle="@blogPost.UrlHandle">
+                                Daha Fazla
+                            </a>
+                        </div>
                     </div>
                 }
             }
         </div>
     </div>
-
 </div>
+
 
