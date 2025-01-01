@@ -2,32 +2,51 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
 
+    <!-- İçerideki CSS stilini ekliyoruz -->
+    <style>
+        .card-img-top:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+    </style>
+
+    <!-- Bootstrap ve diğer stil dosyaları buraya eklenebilir -->
+</head>
+
+<body>
 <div class="container col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-5 py-5">
         <div class="col-12 col-lg-6">
-            <h1 class="display-5 fw-bold lh-1 mb-3">
+            <h1 class="display-4 text-center text-truncate fw-bold lh-1 mb-4">
                 Perde Arkası
             </h1>
-            <p class="lead">
-                "Perde Arkası"na! Hoş Geldiniz 🎬
-                Sinema dünyasına yepyeni bir pencereden bakmaya hazır mısınız?
+            <p class="lead text-center text-muted mb-5">
+                "Perde Arkası"na! Hoş Geldiniz 🎬 Sinema dünyasına yepyeni bir pencereden bakmaya hazır mısınız?
 
-                Burada, en sevilen filmlerin:
+                    Burada, en sevilen filmlerin:
 
-                Özetlerini keşfedin,
-                IMDb puanlarını inceleyin,
-                Kullanıcı yorumlarını okuyun ve kendi yorumlarınızı paylaşın!
-                Sinema perdesinin arkasındaki büyülü dünyayı birlikte keşfedelim. Hangi filmi izlesem diye düşünüyorsanız doğru yerdesiniz.
-                📽️ Haydi, perdeyi aralayalım!
+                    Özetlerini keşfedin,
+                    IMDb puanlarını inceleyin,
+                    Kullanıcı yorumlarını okuyun ve kendi yorumlarınızı paylaşın!
+                    Sinema perdesinin arkasındaki büyülü dünyayı birlikte keşfedelim. Hangi filmi izlesem diye düşünüyorsanız doğru yerdesiniz.
+                    📽️ Haydi, perdeyi aralayalım!
             </p>
+
 
         </div>
 
         <div class="col-12 col-lg-6">
-            <img src="https://images.pexels.com/photos/7991579/pexels-photo-7991579.jpeg?auto=compress&cs=tinysrgb&w=600" 
-            alt="Perde Arkası" 
-            class="d-block mx-large-auto img-fluid" width="400"/>
+            <img src="https://images.pexels.com/photos/7991579/pexels-photo-7991579.jpeg?auto=compress&cs=tinysrgb&w=600"
+                 alt="Perde Arkası"
+                 class="d-block mx-auto img-fluid rounded shadow-lg" />
+
         </div>
     </div>
 </div>
@@ -59,34 +78,32 @@
             {
                 foreach (var blogPost in Model.BlogPosts)
                 {
-                    <div class="card mb-4 shadow-sm">
-                        <!-- Card stili -->
-                        <img src="@blogPost.FeaturedImageUrl" alt="@blogPost.Heading"
-                             class="card-img-top" />
-
+                    <div class="card mb-4 shadow-lg border-0">
+                            <a href="@Url.Action("Index", "Blogs", new { urlHandle = blogPost.UrlHandle })">
+                                <img src="@blogPost.FeaturedImageUrl" alt="@blogPost.Heading"
+                                     class="card-img-top rounded-top" />
+                            </a>
                         <div class="card-body">
-                            <h5 class="card-title">@blogPost.Heading</h5>
-                            <p class="card-text text-truncate" style="max-height: 3em; overflow: hidden;">
-                                @blogPost.ShortDescription
-                            </p>
+                            <h5 class="card-title text-dark fw-bold">@blogPost.Heading</h5>
                             <p class="text-muted">
                                 <small>Yazar: @blogPost.Author</small>
                                 <br />
                                 <small>Paylaşım Tarihi: @blogPost.PublishedDate.ToShortDateString()</small>
+                                <br />
+                                <small>IMDb: @blogPost.ShortDescription</small>
                             </p>
-                            <a class="btn btn-dark btn-sm"
-                               asp-area=""
-                               asp-controller="Blogs"
-                               asp-action="Index"
-                               asp-route-urlHandle="@blogPost.UrlHandle">
+                            <a class="btn btn-dark btn-sm" asp-area="" asp-controller="Blogs" asp-action="Index" asp-route-urlHandle="@blogPost.UrlHandle">
                                 Daha Fazla
                             </a>
                         </div>
                     </div>
+
                 }
             }
         </div>
     </div>
 </div>
 
+
+</body>
 
