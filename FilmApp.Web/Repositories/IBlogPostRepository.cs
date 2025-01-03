@@ -15,6 +15,6 @@ namespace FilmApp.Web.Repositories
         Task<BlogPost?> UpdateAsync(BlogPost blogPost); // işlem yapılacak entity'nin bulunmama durumu da var
 
         Task<BlogPost?> DeleteAsync(Guid id);  // bu yüzden ? kullanılır
-
+        
     }
 }

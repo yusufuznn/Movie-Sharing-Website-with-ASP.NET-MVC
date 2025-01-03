@@ -21,18 +21,35 @@ namespace FilmApp.Web.Controllers
             this.tagRepository = tagRepository;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string tag = null, int page = 1)
         {
-            // paylaþýmlarý alalým
-            var blogPosts = await blogPostRepository.GetAllAsync();
+            const int pageSize = 6; // Her sayfada kaç paylaþým göstereceðimizi belirtiyoruz
 
-            // tag'leri alalým
+            // Paylaþýmlarý alýyoruz (eðer tag varsa filtreleme yapýyoruz)
+            var blogPosts = await blogPostRepository.GetAllAsync();
+            if (!string.IsNullOrEmpty(tag))
+            {
+                blogPosts = blogPosts.Where(bp => bp.Tags.Any(t => t.Name == tag)).ToList();
+            }
+
+            // Toplam paylaþým sayýsý
+            var totalPosts = blogPosts.Count();
+
+            // Sayfalama iþlemi
+            var pagedPosts = blogPosts
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            // Tag'leri alýyoruz
             var tags = await tagRepository.GetAllAsync();
 
             var model = new HomeViewModel
             {
-                BlogPosts = blogPosts,
-                Tags = tags
+                BlogPosts = pagedPosts,
+                Tags = tags,
+                CurrentPage = page,
+                TotalPages = (int)Math.Ceiling((double)totalPosts / pageSize)
             };
 
             return View(model);
@@ -48,6 +65,12 @@ namespace FilmApp.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+
+        
+
+
 
 
 
