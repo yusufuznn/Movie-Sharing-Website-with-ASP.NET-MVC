@@ -12,14 +12,23 @@
     <link rel="stylesheet" href="~/FilmApp.Web.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>
+    <!-- Google Fonts: Poppins fontunu ekliyoruz -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link href="/Images/perdeArkasi.jpeg" rel="icon">
+
+
 </head>
 <body>
+
+
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FilmApp.Web</a>
+                <!-- Navbar Brand kısmı, yazıyı font-family ile güncelliyoruz -->
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.8rem;">
+                    Perde Arkası
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -29,100 +38,55 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
                         </li>
-
                         @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-						{
+                        {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Admin
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item"
-                                           asp-area=""
-                                           asp-controller="AdminTags"
-                                           asp-action="Add">
-                                            Etiket Ekle
-                                        </a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="AdminTags" asp-action="Add">Etiket Ekle</a>
                                     </li>
-
                                     <li>
-                                        <a class="dropdown-item"
-                                           asp-area=""
-                                           asp-controller="AdminTags"
-                                           asp-action="List">
-                                            Etiketleri Göster
-                                        </a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="AdminTags" asp-action="List">Etiketleri Göster</a>
                                     </li>
-
                                     <li>
-                                        <a class="dropdown-item"
-                                           asp-area=""
-                                           asp-controller="AdminBlogPosts"
-                                           asp-action="Add">
-                                            Paylaşım Yap
-                                        </a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="AdminBlogPosts" asp-action="Add">Paylaşım Yap</a>
                                     </li>
-
                                     <li>
-                                        <a class="dropdown-item"
-                                           asp-area=""
-                                           asp-controller="AdminBlogPosts"
-                                           asp-action="List">
-                                            Paylaşımlar
-                                        </a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="AdminBlogPosts" asp-action="List">Paylaşımlar</a>
                                     </li>
-
                                     <li>
-                                        <a class="dropdown-item"
-                                           asp-area=""
-                                           asp-controller="AdminUsers"
-                                           asp-action="List">
-                                            Kullanıcılar
-                                        </a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="AdminUsers" asp-action="List">Kullanıcılar</a>
                                     </li>
-
                                 </ul>
                             </li>
-						})
-                        
-
-
+                        }
                     </ul>
 
                     <div class="d-flex align-items-center">
-
-						@if (SignInManager.IsSignedIn(User))
-						{
+                        @if (SignInManager.IsSignedIn(User))
+                        {
                             <div class="me-3 text-light">
-								@User?.Identity?.Name
+                                @User?.Identity?.Name
                             </div>
-							<a class="btn me-3 bg-light text-dark"
-							   asp-area=""
-							   asp-controller="Account"
-							   asp-action="Logout">Çıkış Yap</a>
-						}
-
+                            <a class="btn me-3 bg-light text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Çıkış Yap</a>
+                        }
                         else
                         {
-                            <a class="btn me-3 bg-light text-dark"
-                               asp-area=""
-                               asp-controller="Account"
-                               asp-action="Login">Giriş Yap</a>
-
-                            <a class="btn me-3 bg-light text-dark"
-                               asp-area=""
-                               asp-controller="Account"
-                               asp-action="Register">Üye Ol</a>
+                            <a class="btn me-3 bg-light text-dark" asp-area="" asp-controller="Account" asp-action="Login">Giriş Yap</a>
+                            <a class="btn me-3 bg-light text-dark" asp-area="" asp-controller="Account" asp-action="Register">Üye Ol</a>
                         }
-
-                            
                     </div>
-
                 </div>
             </div>
         </nav>
+
     </header>
+
+
+
     <div>
         <main role="main" class="pb-3">
             @RenderBody()

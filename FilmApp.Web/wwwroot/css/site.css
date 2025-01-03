@@ -25,3 +25,73 @@ body {
 .blog-details-content img {
     max-width: 100%;
 }
+
+
+
+/* Navbar dark theme */
+.bg-dark {
+    background-color: #1a1a1a !important; /* Daha koyu bir arka plan */
+}
+
+.navbar {
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid #ffc107; /* Alt çizgi ile þýk görünüm */
+}
+
+.navbar-brand {
+    font-size: 1.6rem;
+    color: #ffc107 !important; /* Þýk bir altýn sarýsý */
+    text-transform: uppercase;
+}
+
+/* Navbar links */
+.nav-link {
+    transition: color 0.3s ease-in-out;
+}
+
+    .nav-link:hover {
+        color: #ffc107 !important; /* Altýn sarýsý hover */
+    }
+
+.navbar-toggler-icon {
+    filter: invert(100%);
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    background-color: #1a1a1a; /* Dropdown için koyu tema */
+    border: 1px solid #ffc107; /* Sarý kenarlýk */
+}
+
+.dropdown-item {
+    color: #ffffff; /* Beyaz yazý */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .dropdown-item:hover {
+        background-color: #ffc107; /* Altýn sarýsý arka plan */
+        color: #1a1a1a; /* Koyu yazý */
+    }
+
+/* Buttons */
+.btn-outline-warning {
+    color: #ffc107;
+    border-color: #ffc107;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .btn-outline-warning:hover {
+        background-color: #ffc107;
+        color: #1a1a1a;
+    }
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #1a1a1a;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .btn-warning:hover {
+        background-color: #e6b800; /* Biraz daha koyu bir altýn */
+        color: #1a1a1a;
+    }

@@ -9,94 +9,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
 
-    <!-- İçerideki CSS stilini ekliyoruz -->
+    <!-- Google Fonts: 2 tane -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
+
     <style>
-        .card-img-top:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
+        body {
+            background-color: #121212;
+            color: #f1f1f1;
+            font-family: 'Maven Pro', sans-serif; /* Genel metin için */
+        }
+
+        h1 {
+            color: #ffc107;
+            font-family: 'DM Serif Display', sans-serif; /* Yeni font */
+            letter-spacing: 2px; /* Harf aralığı ile daha şık görünüm */
+        }
+
+        p {
+            color: #d6d6d6;
+            font-family: 'Maven Pro', sans-serif;
         }
     </style>
+
+
+    <!-- İçerideki CSS stilini ekliyoruz -->
+    <style>
+        body {
+            background-color: #121212; /* Koyu arka plan */
+            color: #f1f1f1; /* Yazılar için açık renk */
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #ffc107; /* Altın sarısı başlık rengi */
+        }
+
+        p {
+            color: #d6d6d6;
+        }
+
+        .btn {
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+            .btn:hover {
+                transform: scale(1.05);
+            }
+
+        .card {
+            background-color: #1f1f1f; /* Kartların koyu arka planı */
+            color: #f1f1f1;
+            border: 1px solid #333333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .card:hover {
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Hover gölge efekti */
+                transform: translateY(-10px); /* Kartı biraz yukarı kaydırma */
+            }
+
+        .card-title {
+            color: #ffc107;
+        }
+
+        .pagination .page-link {
+            color: #ffc107; /* Altın sarısı pagination linkleri */
+            background-color: #1f1f1f;
+            border-color: #ffc107;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #1f1f1f;
+        }
+
+        /* Link hover efekti */
+        .card a:hover {
+            text-decoration: none; /* Altı çizgi efekti yok */
+            color: #ffc107; /* Altın sarısı renkte metin */
+        }
+    </style>
+
 
     <!-- Bootstrap ve diğer stil dosyaları buraya eklenebilir -->
 </head>
 
 <body>
-<div class="container col-xxl-8 px-4 py-5">
-    <div class="row align-items-center g-5 py-5">
-        <div class="col-12 col-lg-6">
-            <h1 class="display-4 text-center text-truncate fw-bold lh-1 mb-4">
-                Perde Arkası
-            </h1>
-            <p class="lead text-center text-muted mb-5">
-                "Perde Arkası"na! Hoş Geldiniz 🎬 Sinema dünyasına yepyeni bir pencereden bakmaya hazır mısınız?
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-5 py-5">
+            <div class="col-12 col-lg-6">
+                <h1 class="display-4 text-center text-uppercase fw-bold">
+                    Perde Arkası
+                </h1>
+                <p class="lead text-center">
+                    "Perde Arkası"na! Hoş Geldiniz 🎬 Sinema dünyasına yepyeni bir pencereden bakmaya hazır mısınız?
+                    <br /><br />
+                    📽️ En sevilen filmlerin özetlerini keşfedin, IMDb puanlarını inceleyin, kullanıcı yorumlarını okuyun ve kendi yorumlarınızı paylaşın!
+                    <br />
+                    Haydi, perdeyi aralayalım!
+                </p>
+            </div>
 
-                    Burada, en sevilen filmlerin:
-
-                    Özetlerini keşfedin,
-                    IMDb puanlarını inceleyin,
-                    Kullanıcı yorumlarını okuyun ve kendi yorumlarınızı paylaşın!
-                    Sinema perdesinin arkasındaki büyülü dünyayı birlikte keşfedelim. Hangi filmi izlesem diye düşünüyorsanız doğru yerdesiniz.
-                    📽️ Haydi, perdeyi aralayalım!
-            </p>
-
-
-        </div>
-
-        <div class="col-12 col-lg-6">
-            <img src="https://images.pexels.com/photos/7991579/pexels-photo-7991579.jpeg?auto=compress&cs=tinysrgb&w=600"
-                 alt="Perde Arkası"
-                 class="d-block mx-auto img-fluid rounded shadow-lg" />
-
-        </div>
-    </div>
-</div>
-
-    <div class="container">
-        <div class="row justify-content-lg-between">
-            <div class="col-12 d-flex flex-wrap">
-                @if (Model != null && Model.Tags.Any())
-                {
-                    foreach (var tag in Model.Tags)
-                    {
-                        <a href="@Url.Action("Index", "Home", new { tag = tag.Name })"
-                           class="btn btn-outline-dark btn-sm me-2 mb-2 shadow-sm rounded-pill">
-                            @tag.Name
-                        </a>
-                    }
-                }
+            <div class="col-12 col-lg-6">
+                <img src="https://images.pexels.com/photos/7991579/pexels-photo-7991579.jpeg?auto=compress&cs=tinysrgb&w=600"
+                     alt="Perde Arkası"
+                     class="d-block mx-auto img-fluid rounded shadow-lg" />
             </div>
         </div>
     </div>
 
+    <div class="container my-5">
+    <div class="row">
+        <div class="col-12 d-flex flex-wrap justify-content-start">
+            @if (Model != null && Model.Tags.Any())
+            {
+                foreach (var tag in Model.Tags)
+                {
+                    <a href="@Url.Action("Index", "Home", new { tag = tag.Name })"
+                       class="btn btn-outline-warning btn-sm me-2 mb-2 shadow-sm rounded-pill">
+                        @tag.Name
+                    </a>
+                }
+            }
+        </div>
+    </div>
+</div>
 
 
-
-
-
-
-    <div class="container">
+    <div class="container my-5">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            <!-- row-cols sınıfı ile sütun sayısı belirlenir -->
             @if (Model != null && Model.BlogPosts.Any())
             {
                 foreach (var blogPost in Model.BlogPosts)
                 {
                     <div class="col">
-                        <div class="card h-100 shadow-lg border-0">
+                        <div class="card h-100 shadow-lg">
                             <a href="@Url.Action("Index", "Blogs", new { urlHandle = blogPost.UrlHandle })">
                                 <img src="@blogPost.FeaturedImageUrl" alt="@blogPost.Heading"
                                      class="card-img-top rounded-top" />
                             </a>
                             <div class="card-body">
-                                <h5 class="card-title text-dark fw-bold">@blogPost.Heading</h5>
-                                <p class="text-muted">
-                                    <small>Yazar: @blogPost.Author</small>
-                                    <br />
-                                    <small>Paylaşım Tarihi: @blogPost.PublishedDate.ToShortDateString()</small>
-                                    <br />
+                                <h5 class="card-title">@blogPost.Heading</h5>
+                                <p class="card-text">
+                                    <small>Yazar: @blogPost.Author</small><br />
+                                    <small>Paylaşım Tarihi: @blogPost.PublishedDate.ToShortDateString()</small><br />
                                     <small>IMDb: @blogPost.ShortDescription</small>
                                 </p>
-                                <a class="btn btn-dark btn-sm" asp-area="" asp-controller="Blogs" asp-action="Index" asp-route-urlHandle="@blogPost.UrlHandle">
+                                <a class="btn btn-warning btn-sm"
+                                   asp-area="" asp-controller="Blogs"
+                                   asp-action="Index" asp-route-urlHandle="@blogPost.UrlHandle">
                                     Daha Fazla
                                 </a>
                             </div>
@@ -107,37 +171,31 @@
         </div>
     </div>
 
+    <div class="d-flex justify-content-center mt-4">
+        <nav>
+            <ul class="pagination">
+                @if (Model.CurrentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = Model.CurrentPage - 1 })">Önceki</a>
+                    </li>
+                }
 
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                    </li>
+                }
 
+                @if (Model.CurrentPage < Model.TotalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = Model.CurrentPage + 1 })">Sonraki</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
 </body>
-
-
-
-
-<div class="d-flex justify-content-center mt-4">
-    <nav>
-        <ul class="pagination">
-            @if (Model.CurrentPage > 1)
-            {
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Index", new { page = Model.CurrentPage - 1 })">Önceki</a>
-                </li>
-            }
-
-            @for (int i = 1; i <= Model.TotalPages; i++)
-            {
-                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
-                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
-                </li>
-            }
-
-            @if (Model.CurrentPage < Model.TotalPages)
-            {
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Index", new { page = Model.CurrentPage + 1 })">Sonraki</a>
-                </li>
-            }
-        </ul>
-    </nav>
-</div>
-
+</html>
