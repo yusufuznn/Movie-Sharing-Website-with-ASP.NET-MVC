@@ -22,7 +22,7 @@ namespace FilmApp.Web.Controllers
             return View();
         }
 
-
+        // commit
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
         {
