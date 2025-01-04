@@ -8,11 +8,11 @@
 Perde Arkası is a movie-sharing platform where users can explore detailed information about their favorite films, check IMDb ratings, leave comments, and connect with other movie enthusiasts. This project aims to create a fun and informative community for cinephiles. 
 
 ## 🚀 Features
-🎥 Movie Sharing: Detailed summaries and IMDb ratings.
-📜 User Reviews: Share your thoughts about films.
-🔖 Tagging System: Filter movies by categories.
-📄 Pagination: Navigate movies page by page.
-🌟 Lazy Loading: Content loads elegantly as you scroll down.
+-🎥 Movie Sharing: Detailed summaries and IMDb ratings.
+-📜 User Reviews: Share your thoughts about films.
+-🔖 Tagging System: Filter movies by categories.
+-📄 Pagination: Navigate movies page by page.
+-🌟 Lazy Loading: Content loads elegantly as you scroll down.
 
 ---
 
