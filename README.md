@@ -1,7 +1,8 @@
 # 🎬 Perde Arkası - Film Paylaşım Platformu
 
+![perdeArkasi](https://github.com/user-attachments/assets/5600d9e0-71e8-49c5-9a77-63739310ab55)
 
-![perdeArkasi](https://github.com/user-attachments/assets/3a829d6a-d04e-4ad6-8a7f-8a6797cd5b30)
+
 
 ## 📖 Proje Hakkında
 
@@ -40,6 +41,7 @@ Bu projede kullanılan temel teknolojiler:
 ### Film Detayları
 ![posts](https://github.com/user-attachments/assets/421341ce-b6aa-4c57-a826-6a48936f1b9a)
 
+![movie](https://github.com/user-attachments/assets/09125f4e-479b-4f78-8299-76683fe2e26f)
 
 
 ---
