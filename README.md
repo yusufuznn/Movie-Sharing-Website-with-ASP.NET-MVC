@@ -1,26 +1,24 @@
-# 🎬 Perde Arkası - Film Paylaşım Platformu
+# 🎬 Perde Arkası - Movie Sharing Platform
 
 ![perdeArkasi](https://github.com/user-attachments/assets/5600d9e0-71e8-49c5-9a77-63739310ab55)
 
 
 
-## 📖 Proje Hakkında
+## 📖 About the Project
+Behind the Curtain is a movie-sharing platform where users can explore detailed information about their favorite films, check IMDb ratings, leave comments, and connect with other movie enthusiasts. This project aims to create a fun and informative community for cinephiles. 
 
-**Perde Arkası**, kullanıcıların en sevilen filmler hakkında bilgi edinebileceği, IMDb puanlarını inceleyebileceği, yorum yapabileceği ve diğer sinemaseverlerle iletişim kurabileceği bir film paylaşım platformudur. Bu proje, film severler için eğlenceli ve bilgilendirici bir topluluk yaratmayı amaçlamaktadır. 
-
-## 🚀 Özellikler
-
-- 🎥 Film paylaşımları: Detaylı özetler ve IMDb puanları.
-- 📜 Kullanıcı yorumları: Filmler hakkında düşüncelerinizi paylaşın.
-- 🔖 Etiket sistemi: Filmleri kategorilere göre filtreleyin.
-- 📄 Pagination: Filmleri sayfa sayfa gezinme özelliği.
-- 🌟 Lazy loading: İçerikler aşağı kaydırıldıkça şık bir şekilde yüklenir.
+## 🚀 Features
+🎥 Movie Sharing: Detailed summaries and IMDb ratings.
+📜 User Reviews: Share your thoughts about films.
+🔖 Tagging System: Filter movies by categories.
+📄 Pagination: Navigate movies page by page.
+🌟 Lazy Loading: Content loads elegantly as you scroll down.
 
 ---
 
-## 💻 Teknolojiler
+## 💻 Technologies
 
-Bu projede kullanılan temel teknolojiler:
+The key technologies used in this project are:
 
 - **Backend:** ASP.NET Core (C#)
 - **Frontend:** HTML, CSS, Bootstrap
@@ -32,14 +30,14 @@ Bu projede kullanılan temel teknolojiler:
 
 ---
 
-## 📸 Ekran Görüntüleri
+## 📸 Screenshots
 
-### Ana Sayfa
+### Homepage
 ![hpage](https://github.com/user-attachments/assets/4d51f746-45fc-4afd-b911-39c14487a5c8)
 
 ![posts](https://github.com/user-attachments/assets/421341ce-b6aa-4c57-a826-6a48936f1b9a)
 
-### Film Detayları
+### Movie Details
 
 ![movie](https://github.com/user-attachments/assets/64b54b84-7197-4e5f-b9f5-f9938f8b17e7)
 
@@ -48,65 +46,51 @@ Bu projede kullanılan temel teknolojiler:
 
 ---
 
-## 📦 Kurulum
+## 📦 Setup
+Follow these steps to run the project locally:
 
-Proje, yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
-
-1. Bu repoyu klonlayın:
+1. Clone this repository:
     ```bash
     git clone https://github.com/kullaniciadi/perde-arkasi.git
     ```
 
-2. Proje dizinine gidin:
+2. Navigate to the project directory:
     ```bash
     cd perde-arkasi
     ```
 
-3. Gerekli bağımlılıkları yükleyin ve veritabanını ayarlayın:
+3. Install dependencies and set up the database:
     ```bash
     dotnet restore
     dotnet ef database update
     ```
 
-4. Uygulamayı çalıştırın:
+4. Run the application:
     ```bash
     dotnet run
     ```
 
-5. Tarayıcınızda projeyi açın:
+5. Open the project in your browser:
     ```
     http://localhost:5000
     ```
 
 ---
 
-## 🛠️ Geliştirme
-
-### Projeyi Geliştirmek için:
-
-- Geliştirme sürecinde katkıda bulunmak isterseniz `CONTRIBUTING.md` dosyasını kontrol edin.
-- Hata raporları ve öneriler için bir **issue** açabilirsiniz.
+## 🛠️ Development
+To Contribute:
+* Check the CONTRIBUTING.md file for contribution guidelines.
+* Open an issue for bug reports or suggestions.
 
 ---
 
-## 🤝 Katkı Sağlama
+## 🤝 Contributing
+Want to contribute to the project? Follow these steps to get started:
 
-Projeye katkıda bulunmak mı istiyorsunuz?Aşağıdaki adımları izleyerek katkıda bulunabilirsiniz:
-
-1. Bu repoyu forklayın.
-2. Kendi branch'inizi oluşturun (`git checkout -b feature/yeniozellik`).
-3. Yaptığınız değişiklikleri commit edin (`git commit -m "Yeni özellik ekledim"`).
-4. Branch'inizi push edin (`git push origin feature/yeniozellik`).
-5. Bir **Pull Request** oluşturun.
-
----
-
-## 🌟 Teşekkürler
-
-Bu proje, sinemaya olan tutku ve programlamaya olan ilginin birleşimiyle oluşturulmuştur. Destekleyen herkese teşekkürler! 😊
+1. Fork this repository.
+2. Create your feature branch (git checkout -b feature/new-feature).
+3. Commit your changes (git commit -m "Added a new feature").
+4. Push to the branch (git push origin feature/new-feature).
+5. Create a Pull Request.
 
 ---
-
-## 📄 Lisans
-
-Bu proje [MIT Lisansı](LICENSE) ile lisanslanmıştır. Detaylı bilgi için `LICENSE` dosyasını inceleyin.
