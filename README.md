@@ -49,31 +49,26 @@ The key technologies used in this project are:
 ## 📦 Setup
 Follow these steps to run the project locally:
 
-1. Clone this repository:
-    ```bash
-    git clone https://github.com/kullaniciadi/perde-arkasi.git
-    ```
+1. Clone the repository:
 
-2. Navigate to the project directory:
-    ```bash
-    cd perde-arkasi
-    ```
+git clone https://github.com/yourusername/perdearkasi.git
+Open the solution file (WebApplicationPLS.sln) in Visual Studio.
 
-3. Install dependencies and set up the database:
-    ```bash
-    dotnet restore
-    dotnet ef database update
-    ```
+Restore NuGet packages:
 
-4. Run the application:
-    ```bash
-    dotnet run
-    ```
+Tools -> NuGet Package Manager -> Manage NuGet Packages for Solution -> Restore
+Update the database connection string in web.config:
 
-5. Open the project in your browser:
-    ```
-    http://localhost:5000
-    ```
+<connectionStrings>
+    <add name="DefaultConnection" connectionString="YourDatabaseConnectionString" providerName="System.Data.SqlClient" />
+</connectionStrings>
+Build the solution:
+
+Build -> Build Solution
+Run the project:
+
+Debug -> Start Without Debugging
+Open your browser and visit http://localhost:port/.
 
 ---
 
