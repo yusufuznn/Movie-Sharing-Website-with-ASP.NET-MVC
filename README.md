@@ -1,6 +1,7 @@
 # 🎬 Perde Arkası - Film Paylaşım Platformu
 
-![Perde Arkası Banner](https://via.placeholder.com/1200x400?text=Perde+Arkası+Film+Platformu)
+
+![perdeArkasi](https://github.com/user-attachments/assets/3a829d6a-d04e-4ad6-8a7f-8a6797cd5b30)
 
 ## 📖 Proje Hakkında
 
@@ -33,13 +34,13 @@ Bu projede kullanılan temel teknolojiler:
 ## 📸 Ekran Görüntüleri
 
 ### Ana Sayfa
-![Ana Sayfa](https://via.placeholder.com/800x400?text=Ana+Sayfa+Örneği)
+![hpage](https://github.com/user-attachments/assets/4d51f746-45fc-4afd-b911-39c14487a5c8)
+
 
 ### Film Detayları
-![Film Detayları](https://via.placeholder.com/800x400?text=Film+Detay+Sayfası)
+![posts](https://github.com/user-attachments/assets/421341ce-b6aa-4c57-a826-6a48936f1b9a)
 
-### Yorumlar
-![Yorumlar](https://via.placeholder.com/800x400?text=Yorum+Örneği)
+
 
 ---
 
@@ -86,7 +87,7 @@ Proje, yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
 
 ## 🤝 Katkı Sağlama
 
-Projeye katkıda bulunmak mı istiyorsunuz? Harika! Aşağıdaki adımları izleyerek katkıda bulunabilirsiniz:
+Projeye katkıda bulunmak mı istiyorsunuz?Aşağıdaki adımları izleyerek katkıda bulunabilirsiniz:
 
 1. Bu repoyu forklayın.
 2. Kendi branch'inizi oluşturun (`git checkout -b feature/yeniozellik`).
