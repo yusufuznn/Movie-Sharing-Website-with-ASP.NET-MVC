@@ -37,9 +37,10 @@ Bu projede kullanılan temel teknolojiler:
 ### Ana Sayfa
 ![hpage](https://github.com/user-attachments/assets/4d51f746-45fc-4afd-b911-39c14487a5c8)
 
+![posts](https://github.com/user-attachments/assets/421341ce-b6aa-4c57-a826-6a48936f1b9a)
 
 ### Film Detayları
-![posts](https://github.com/user-attachments/assets/421341ce-b6aa-4c57-a826-6a48936f1b9a)
+
 
 ![movie](https://github.com/user-attachments/assets/09125f4e-479b-4f78-8299-76683fe2e26f)
 
