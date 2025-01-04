@@ -74,6 +74,7 @@ git clone https://github.com/yourusername/perdearkasi.git
 # 7. Access the application
 # Open your browser and visit:
 # http://localhost:port/
+```
 ---
 
 ## 🛠️ Development
