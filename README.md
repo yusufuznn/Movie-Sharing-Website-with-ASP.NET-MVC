@@ -52,23 +52,24 @@ Follow these steps to run the project locally:
 1. Clone the repository:
 
 git clone https://github.com/yourusername/perdearkasi.git
-Open the solution file (WebApplicationPLS.sln) in Visual Studio.
+2. Open the solution file (WebApplicationPLS.sln) in Visual Studio.
 
-Restore NuGet packages:
+3. Restore NuGet packages:
 
 Tools -> NuGet Package Manager -> Manage NuGet Packages for Solution -> Restore
-Update the database connection string in web.config:
 
+4. Update the database connection string in web.config:
 <connectionStrings>
     <add name="DefaultConnection" connectionString="YourDatabaseConnectionString" providerName="System.Data.SqlClient" />
 </connectionStrings>
-Build the solution:
+5. Build the solution:
 
 Build -> Build Solution
-Run the project:
+6. Run the project:
 
 Debug -> Start Without Debugging
-Open your browser and visit http://localhost:port/.
+
+7. Open your browser and visit http://localhost:port/.
 
 ---
 
