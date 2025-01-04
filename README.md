@@ -49,28 +49,31 @@ The key technologies used in this project are:
 ## 📦 Setup
 Follow these steps to run the project locally:
 
-1. Clone the repository:
-
+```bash
+# 1. Clone the repository
 git clone https://github.com/yourusername/perdearkasi.git
-2. Open the solution file (WebApplicationPLS.sln) in Visual Studio.
 
-3. Restore NuGet packages:
+# 2. Open the solution file
+# Open `WebApplicationPLS.sln` in Visual Studio.
 
-Tools -> NuGet Package Manager -> Manage NuGet Packages for Solution -> Restore
+# 3. Restore NuGet packages
+# In Visual Studio:
+# Tools -> NuGet Package Manager -> Manage NuGet Packages for Solution -> Restore
 
-4. Update the database connection string in web.config:
-<connectionStrings>
-    <add name="DefaultConnection" connectionString="YourDatabaseConnectionString" providerName="System.Data.SqlClient" />
-</connectionStrings>
-5. Build the solution:
+# 4. Update the database connection string
+# Modify the connection string in `web.config` to match your database configuration.
 
-Build -> Build Solution
-6. Run the project:
+# 5. Build the solution
+# In Visual Studio:
+# Build -> Build Solution
 
-Debug -> Start Without Debugging
+# 6. Run the project
+# In Visual Studio:
+# Debug -> Start Without Debugging
 
-7. Open your browser and visit http://localhost:port/.
-
+# 7. Access the application
+# Open your browser and visit:
+# http://localhost:port/
 ---
 
 ## 🛠️ Development
