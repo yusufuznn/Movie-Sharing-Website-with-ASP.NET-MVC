@@ -5,7 +5,7 @@
 
 
 ## 📖 About the Project
-Behind the Curtain is a movie-sharing platform where users can explore detailed information about their favorite films, check IMDb ratings, leave comments, and connect with other movie enthusiasts. This project aims to create a fun and informative community for cinephiles. 
+Perde Arkası is a movie-sharing platform where users can explore detailed information about their favorite films, check IMDb ratings, leave comments, and connect with other movie enthusiasts. This project aims to create a fun and informative community for cinephiles. 
 
 ## 🚀 Features
 🎥 Movie Sharing: Detailed summaries and IMDb ratings.
@@ -23,7 +23,7 @@ The key technologies used in this project are:
 - **Backend:** ASP.NET Core (C#)
 - **Frontend:** HTML, CSS, Bootstrap
 - **Database:** Entity Framework Core
-- **Diğer Araçlar:** 
+- **Other Tools::** 
   - Lazy Loading
   - Pagination
   - Clean MVC Design Pattern
@@ -94,3 +94,7 @@ Want to contribute to the project? Follow these steps to get started:
 5. Create a Pull Request.
 
 ---
+📥Contact
+If you have any questions, suggestions, or feedback, please feel free to reach out:
+
+LinkedIn: www.linkedin.com/in/yusuf-uzun-2607912a8
