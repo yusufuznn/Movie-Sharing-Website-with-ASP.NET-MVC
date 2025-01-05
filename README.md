@@ -37,11 +37,6 @@ The key technologies used in this project are:
 
 ![posts](https://github.com/user-attachments/assets/421341ce-b6aa-4c57-a826-6a48936f1b9a)
 
-### Movie Details
-
-![movie](https://github.com/user-attachments/assets/64b54b84-7197-4e5f-b9f5-f9938f8b17e7)
-
-
 
 
 ---
