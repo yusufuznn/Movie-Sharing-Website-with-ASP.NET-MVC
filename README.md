@@ -35,7 +35,8 @@ The key technologies used in this project are:
 ### Homepage
 ![hpage](https://github.com/user-attachments/assets/4d51f746-45fc-4afd-b911-39c14487a5c8)
 
-![posts](https://github.com/user-attachments/assets/421341ce-b6aa-4c57-a826-6a48936f1b9a)
+![Screenshot 2025-01-05 094932](https://github.com/user-attachments/assets/0eebc838-22c9-4d2d-8e5b-926e7a9ac27e)
+
 
 
 
