@@ -172,3 +172,62 @@
 
 	</script>
 }
+
+
+<style>
+	body {
+		background-color: #121212; /* Koyu arka plan */
+		color: #f1f1f1; /* Yazılar için açık renk */
+		font-family: Arial, sans-serif;
+	}
+
+	h1 {
+		color: #ffc107; /* Altın sarısı başlık rengi */
+	}
+
+	p {
+		color: #d6d6d6;
+	}
+
+	.btn {
+		transition: background-color 0.3s, color 0.3s, transform 0.2s;
+	}
+
+		.btn:hover {
+			transform: scale(1.05);
+		}
+
+	.card {
+		background-color: #1f1f1f; /* Kartların koyu arka planı */
+		color: #f1f1f1;
+		border: 1px solid #333333;
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+		.card:hover {
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Hover gölge efekti */
+			transform: translateY(-10px); /* Kartı biraz yukarı kaydırma */
+		}
+
+	.card-title {
+		color: #ffc107;
+	}
+
+	.pagination .page-link {
+		color: #ffc107; /* Altın sarısı pagination linkleri */
+		background-color: #1f1f1f;
+		border-color: #ffc107;
+	}
+
+	.pagination .page-item.active .page-link {
+		background-color: #ffc107;
+		border-color: #ffc107;
+		color: #1f1f1f;
+	}
+
+	/* Link hover efekti */
+	.card a:hover {
+		text-decoration: none; /* Altı çizgi efekti yok */
+		color: #ffc107; /* Altın sarısı renkte metin */
+	}
+</style>
