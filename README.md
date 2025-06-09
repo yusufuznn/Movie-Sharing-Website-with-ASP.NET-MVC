@@ -93,4 +93,4 @@ Want to contribute to the project? Follow these steps to get started:
 📥Contact
 If you have any questions, suggestions, or feedback, please feel free to reach out:
 
-LinkedIn: www.linkedin.com/in/yusuf-uzun-2607912a8
+LinkedIn: https://www.linkedin.com/in/yusufuzn/
